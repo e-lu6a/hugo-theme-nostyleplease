@@ -1,12 +1,23 @@
 {{ define "main" }}
-
+<!-- html for "home" page -->
 <header>
     <h1>{{ $.Site.Title }}</h1>
     {{- if $.Site.Params.theme_config.show_description -}}
-        <p>{{ $.Site.Params.description }}</p>
+    <p>{{ $.Site.Params.description }}</p>
     {{- end -}}
 </header>
 {{ .Content }}
-{{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
-
+<div style=
+    "display: flex; 
+    flex-direction: row; 
+    gap: 45px;
+    width: 1040px; 
+    position: relative; 
+    left: -200px"
+    class="menu"
+>
+    {{ partial "menu_item_custom.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
+    {{ partial "menu_item_custom.html" (dict "context" . "collection" $.Site.Data.menu1.entries) }}
+    {{ partial "menu_item_custom.html" (dict "context" . "collection" $.Site.Data.menu2.entries) }}
+</div>
 {{ end }}

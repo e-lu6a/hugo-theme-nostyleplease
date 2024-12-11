@@ -1,0 +1,9 @@
+[[entries]]
+title = "all other"
+
+  [entries.post_list_undated]
+  section = "posts"
+  limit = 5
+  show_more = true
+  show_more_text = "See archive..."
+  show_more_url = "posts"
