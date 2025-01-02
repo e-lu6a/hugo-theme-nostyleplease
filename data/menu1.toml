@@ -1,8 +1,9 @@
 [[entries]]
-title = "dev"
+# title = "dev"
 
   [[entries.entries]]
-  title = "a (nearly) no-CSS, fast, minimalist Hugo theme ported from <a href='https://github.com/riggraz/no-style-please'>riggraz/no-style-please</a>."
+  title = "darktimes calendar"
+  url = "https://github.com/e-lu6a/darktimes-calendar"
 
   [[entries.entries]]
   title = "github repo"

@@ -1,7 +1,25 @@
 [[entries]]
-title = "architecture"
-  [entries.post_list_undated]
-  section = "architecture"
-  show_more = true
-  show_more_text = "See more posts..."
-  show_more_url = "posts"
+# title = "architecture"
+
+[[entries.entries]]
+title = "a dogpatch home"
+
+[[entries.entries]]
+title = "a gothic-victorian facade"
+
+[[entries.entries]]
+title = "a seacliff home"
+
+#  [entries.post_list_undated]
+#  section = "architecture"
+#  show_more = true
+#  show_more_text = "see more..."
+#  show_more_url = "architecture"
+
+# [[entries]]
+# title = "school work"
+
+[[entries.entries]]
+title = "residents/residence"
+
+

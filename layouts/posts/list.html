@@ -9,7 +9,7 @@
 {{ if  .Site.Params.theme_config.isListGroupByDate  }}
     {{ range .Pages.GroupByDate "2006 Year" }}
     <p>{{ .Key }}</p>
-    <ul>
+    <ul style="background-color: red">
         {{ range .Pages }}
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
         {{ end }}
