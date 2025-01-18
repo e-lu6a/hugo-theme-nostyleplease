@@ -1,10 +1,22 @@
 [[entries]]
-# title = "dev"
+  [entries.post_list_undated]
+  section = "dev"
+  show_more = true
+  show_more_text = "see all"
+  show_more_url = "dev"
 
   [[entries.entries]]
-  title = "darktimes calendar"
+  title = "darktimes calendar script"
   url = "https://github.com/e-lu6a/darktimes-calendar"
 
   [[entries.entries]]
-  title = "github repo"
-  url = "https://github.com/hanwenguo/hugo-theme-nostyleplease"
+  title = "automatic pdf reports"
+
+
+  [[entries.entries]]
+  title= "generative space planning"
+  url = "https://www.youtube.com/watch?v=FgalMMKi8AY&t=1183s"
+
+  [[entries.entries]]
+  title = "where and how long?"
+  url = "https://github.com/e-lu6a/where-and-how-long"

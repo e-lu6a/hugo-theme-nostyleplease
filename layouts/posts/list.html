@@ -1,5 +1,7 @@
 {{ define "main" }}
-{{ partial "back_link.html" .}}
+<div class="post-meta">
+    {{ partial "back_link.html" .}}
+</div>
 
 <h1>{{ .Title }}</h1>
 
@@ -9,7 +11,7 @@
 {{ if  .Site.Params.theme_config.isListGroupByDate  }}
     {{ range .Pages.GroupByDate "2006 Year" }}
     <p>{{ .Key }}</p>
-    <ul style="background-color: red">
+    <ul>
         {{ range .Pages }}
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
         {{ end }}

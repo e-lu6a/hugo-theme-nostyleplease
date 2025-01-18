@@ -1,7 +1,7 @@
 {{ define "main" }}
 <!-- html for "home" page -->
 <!-- this is messy - theme structure & content is combined-->
- <!-- also, no, these comments must come after the define main statement -->
+<!-- these comments must come after the define main statement -->
 <header>
     <h1>{{ $.Site.Title }}</h1>
     {{- if $.Site.Params.theme_config.show_description -}}
@@ -16,15 +16,15 @@
     position: relative; 
     left: -200px" class="menu">
     <div style="flex: 1 1 0px">
-        <h2>architecture</h2>
+        <h2><a href="/arch">architecture</a></h2>
         {{ partial "menu_item_custom.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
     </div>
     <div style="flex: 1 1 0px">
-        <h2>development</h2>
+        <h2><a href="/dev">software</a></h2>
         {{ partial "menu_item_custom.html" (dict "context" . "collection" $.Site.Data.menu1.entries) }}
     </div>
     <div style="flex: 1 1 0px">
-        <h2>other</h2>
+        <h2><a href="/posts">architecture</a></h2>
         {{ partial "menu_item_custom.html" (dict "context" . "collection" $.Site.Data.menu2.entries) }}
     </div>
 </div>

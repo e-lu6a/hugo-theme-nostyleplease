@@ -7,6 +7,16 @@
   a {
     color: $--link-color;
     &:visited { color: $--visited-link-color; }
+    &:hover {color: #b6465f;}   // ideally this color is specified in a variable
+    text-decoration: none;
+  }
+
+  h2 {
+    a {
+      color: $--primary-text-color;
+      &:visited { color: $--primary-text-color; }
+      &:hover {color: #b6465f;} 
+    }
   }
 
   details {
@@ -51,12 +61,24 @@
   }
 }
 
+
+// #b6465f
 @mixin dark-appearance {
   @include theme(#212121, #fafafa, #000000, #0071bc, #a359e9, #FFFF00);
 }
 
+// original light theme colors
+// @mixin light-appearance {
+//   @include theme(#ffffff, #212121, #666666, #1e70bf, #921292, #FFFF00);
+// }
+
+// some blue options, not satisfied with any of them in particular
+// #255C99
+// #2E86AB
+// #065A82
+
 @mixin light-appearance {
-  @include theme(#ffffff, #212121, #666666, #1e70bf, #921292, #FFFF00);
+  @include theme(#ffffff, #212121, #666666, #1e70bf, #1e70bf, #FFFF00);
 }
 
 body[a="dark"] { @include dark-appearance; }
@@ -143,7 +165,7 @@ blockquote {
 img {
   max-width: 100%;
   display: block;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 
 figcaption {
@@ -167,7 +189,7 @@ details[open] summary {
 .post-meta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .w {

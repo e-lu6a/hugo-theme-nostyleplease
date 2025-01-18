@@ -1,0 +1,10 @@
+{{ define "main" }}
+{{ partial "back_link.html" .}} 
+<!-- semantically incorrect use of "article" here, but i like the styling more, and it's a pain to figure out how to replicate it -->
+<article>
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+<p>this is a <strong>sample gallery layout</strong></p>
+{{ partial "post_list.html" (dict "context" . "section" .Section)}}
+</article>
+{{ end }}

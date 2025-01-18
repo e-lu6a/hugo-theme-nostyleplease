@@ -1,0 +1,9 @@
+<div class="post-meta">
+    {{ partial "back_link.html" .}}
+    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+        <time datetime="{{ .Date }}">
+            {{ .Date | time.Format site.Params.theme_config.date_format }}
+        </time>
+        <div style="text-align: end; color: slategray"> {{.Params.technologies }}</div>
+    </div>
+</div>
