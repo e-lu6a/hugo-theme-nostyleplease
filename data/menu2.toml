@@ -1,7 +1,7 @@
 [[entries]]
 # title = "other"
 
-  [entries.post_list_undated]
+  [entries.post_list]
   section = "posts"
   limit = 5
   show_more = true
