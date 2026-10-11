@@ -100,7 +100,7 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 16px;
 }
 
 h2 {
@@ -191,8 +191,32 @@ details[open] summary {
 .post-meta {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: baseline;
 }
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 5.5rem;
+
+  color: slategray;
+
+  a, a:visited { color: slategray; }
+}
+
+.page-nav + h1,
+.post-meta h1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.page-nav + h1 { margin: 0; }
+
+.page-pager a { font-size: 1.4em; vertical-align: middle; }
+
+.page-pager a + a { margin-left: 1rem; }
 
 .w {
   max-width: 640px;
@@ -230,5 +254,9 @@ details[open] summary {
 
   > ul > ul {
     margin-bottom: 2rem; // space between sections
+  }
+
+  > .pages-list {
+    margin-bottom: 2rem;
   }
 }

@@ -1,5 +1,7 @@
-<p>
-    <time datetime="{{ .Date }}">
-        {{ .Date | time.Format site.Params.theme_config.date_format }}
-    </time>
-</p>
+<div>
+    {{ $fmt := site.Params.theme_config.date_format }}
+    {{ $created := .Date | time.Format $fmt | lower }}
+    {{ $updated := .Lastmod | time.Format $fmt | lower }}
+    {{ if not .Date.IsZero }}<time datetime="{{ .Date }}">{{ $created }}</time>{{ end }}
+    {{ if and (not .Lastmod.IsZero) (ne $created $updated) }}<br><time datetime="{{ .Lastmod }}">{{ $updated }}</time>{{ end }}
+</div>
