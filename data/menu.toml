@@ -1,0 +1,12 @@
+# Default homepage menu structure.
+# Override at the site level via data/menu.toml.
+# Each entry can be a plain link (with url), a nested group (with entries),
+# or an auto-generated post list (with post_list.section).
+
+[[entries]]
+title = "posts"
+post_list = { section = "posts" }
+
+[[entries]]
+title = "about"
+url = "/about"
