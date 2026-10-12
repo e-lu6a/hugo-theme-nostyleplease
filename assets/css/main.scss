@@ -1,4 +1,8 @@
 // -------------- THEME SWITCHER -------------- //
+
+$default-pane-width: 640px;
+$section-max-width: 1400px;
+
 @mixin theme($--bg-color, $--primary-text-color, $--secondary-text-color, $--link-color, $--visited-link-color, $--highlight) {
   background-color: $--bg-color;
 
@@ -199,7 +203,7 @@ details[open] summary {
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
-  margin-bottom: 5.5rem;
+  margin-bottom: 8rem;
 
   color: slategray;
 
@@ -217,7 +221,7 @@ details[open] summary {
 .page-pager a + a { margin-left: 1rem; }
 
 .w {
-  max-width: 640px;
+  max-width: $default-pane-width;
   margin: 0 auto;
   padding: 4rem 2rem;
   box-sizing: border-box;
@@ -227,9 +231,52 @@ details[open] summary {
   flex-direction: column;
   min-height: 100vh;
   min-height: 100svh;
+
+  > * {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  &.page-body {
+    max-width: $section-max-width;
+
+    > nav,
+    > header,
+    > h1,
+    > div,
+    > .site-footer {
+      max-width: $default-pane-width;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    > article {
+      max-width: $section-max-width;
+    }
+  }
+
+  &:not(.page-body) {
+    max-width: $section-max-width;
+
+    > header,
+    > .home-content,
+    > .menu,
+    > .site-footer {
+      max-width: $default-pane-width;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 
 .site-footer {
+  margin-top: 5rem;
+}
+
+.footer-spacer {
   margin-top: auto;
 }
 
@@ -260,5 +307,62 @@ details[open] summary {
     > li {
       font-weight: normal; // pages list items should not be bold
     }
+  }
+}
+
+.page-body article {
+  > *:not(.section) {
+    max-width: $default-pane-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  > .section {
+    max-width: $section-max-width;
+  }
+}
+
+// composable section/column layout primitives (used by section/col shortcodes)
+.section {
+  width: clamp($default-pane-width, 75vw, $section-max-width);
+  margin: 1.5rem auto;
+  box-sizing: border-box;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.section-col {
+  box-sizing: border-box;
+
+  > p:first-child { margin-top: 0; }
+  > p:last-child { margin-bottom: 0; }
+}
+
+.cols-2,
+.cols-3 {
+  display: flex;
+  gap: 2rem;
+
+  .section-col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .cols-2 {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cols-3 {
+    flex-direction: column;
+    gap: 1rem;
   }
 }

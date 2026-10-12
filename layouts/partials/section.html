@@ -1,0 +1,7 @@
+{{ $content := .content }}
+{{ $colMarker := `<div class="section-col"` }}
+{{ $cols := len (findRE $colMarker $content) }}
+{{ if eq $cols 0 }}{{ $cols = 1 }}{{ end }}
+<div class="section cols-{{ $cols }}">
+    {{ $content }}
+</div>
