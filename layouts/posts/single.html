@@ -1,11 +1,11 @@
 {{ define "main" }}
-<div class="post-meta">
-    {{ partial "back_link.html" .}}
-    {{ partial "date.html" .}}
-</div>
-<article>
-    <h1>{{ .Title }}</h1>
+{{ partial "nav.html" . }}
 
+<h1>{{ .Title }}</h1>
+
+{{ partial "date.html" . }}
+
+<article>
     {{ if .Params.toc }}
         <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>
             {{ .TableOfContents }}

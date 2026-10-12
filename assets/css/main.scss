@@ -114,6 +114,16 @@ body[a="light"] { @include elu6a-light-appearance; }
   color: var(--primary-text-color);
 }
 
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+h1 + .post-list {
+  margin-top: 1rem;
+}
+
 // -------------------------------------------- //
 
 html { height: 100%; }
@@ -265,11 +275,8 @@ details[open] summary {
   &.page-body {
     max-width: $section-max-width;
 
-    > nav,
-    > header,
-    > h1,
-    > div,
-    > .site-footer {
+    // narrow all direct children except article (which can be wide for section layouts)
+    > *:not(article) {
       max-width: $default-pane-width;
       width: 100%;
       margin-left: auto;

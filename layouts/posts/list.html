@@ -1,14 +1,12 @@
 {{ define "main" }}
-<div class="post-meta">
-    {{ partial "back_link.html" .}}
-</div>
+{{ partial "nav.html" . }}
 
 <h1>{{ .Title }}</h1>
 
 {{ .Content }}
 
-<!-- divide post list by year  -->
-{{ if  .Site.Params.theme_config.isListGroupByDate  }}
+<!-- divide post list by year -->
+{{ if .Site.Params.theme_config.isListGroupByDate }}
     {{ range .Pages.GroupByDate "2006 Year" }}
     <p>{{ .Key }}</p>
     <ul>
@@ -18,7 +16,6 @@
     </ul>
     {{ end }}
 {{ else }}
-    {{ partial "post_list.html" (dict "context" . "section" .Section)}}
+    {{ partial "post_list.html" (dict "context" . "section" .Section) }}
 {{ end }}
-
 {{ end }}
