@@ -214,8 +214,6 @@ details[open] summary {
 
 .page-nav + h1 { margin: 0; }
 
-.page-pager a { font-size: 1.4em; vertical-align: middle; }
-
 .page-pager a + a { margin-left: 1rem; }
 
 .w {
@@ -258,5 +256,9 @@ details[open] summary {
 
   > .pages-list {
     margin-bottom: 2rem;
+
+    > li {
+      font-weight: normal; // pages list items should not be bold
+    }
   }
 }
