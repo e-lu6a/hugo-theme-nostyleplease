@@ -2,6 +2,7 @@
 
 $default-pane-width: 640px;
 $section-max-width: 1400px;
+$section-stack-breakpoint: 900px;
 
 @mixin theme($--bg-color, $--primary-text-color, $--secondary-text-color, $--link-color, $--visited-link-color, $--highlight) {
   background-color: $--bg-color;
@@ -343,7 +344,8 @@ details[open] summary {
 }
 
 .cols-2,
-.cols-3 {
+.cols-3,
+.cols-1.asymmetric {
   display: flex;
   gap: 2rem;
 
@@ -351,18 +353,30 @@ details[open] summary {
     flex: 1 1 0;
     min-width: 0;
   }
-}
 
-@media (max-width: 480px) {
-  .cols-2 {
-    flex-direction: column;
-    gap: 1rem;
+  .section-main {
+    flex: 0 0 60%;
+    min-width: 0;
+  }
+
+  .section-side {
+    flex: 0 0 40%;
+    min-width: 0;
   }
 }
 
-@media (max-width: 768px) {
-  .cols-3 {
+@media (max-width: $section-stack-breakpoint) {
+  .cols-2,
+  .cols-3,
+  .cols-1.asymmetric {
     flex-direction: column;
     gap: 1rem;
+    width: $default-pane-width;
+
+    .section-main,
+    .section-side,
+    .section-col {
+      flex: 0 0 auto;
+    }
   }
 }

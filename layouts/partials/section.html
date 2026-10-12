@@ -1,7 +1,13 @@
 {{ $content := .content }}
 {{ $colMarker := `<div class="section-col"` }}
+{{ $mainMarker := `<div class="section-main"` }}
+{{ $sideMarker := `<div class="section-side"` }}
 {{ $cols := len (findRE $colMarker $content) }}
+{{ $mains := len (findRE $mainMarker $content) }}
+{{ $sides := len (findRE $sideMarker $content) }}
 {{ if eq $cols 0 }}{{ $cols = 1 }}{{ end }}
-<div class="section cols-{{ $cols }}">
+{{ $modifier := "" }}
+{{ if and (eq $mains 1) (eq $sides 1) }}{{ $modifier = " asymmetric" }}{{ end }}
+<div class="section cols-{{ $cols }}{{ $modifier }}">
     {{ $content }}
 </div>
