@@ -1,0 +1,11 @@
+<nav class="page-nav">
+    <span class="page-nav-left">
+        <a href="{{ "" | relURL }}" aria-label="home">&#10038;</a>
+    </span>
+    {{ if or .PrevInSection .NextInSection }}
+    <span class="page-pager">
+        {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">←</a>{{ end }}
+        {{ with .NextInSection }}<a href="{{ .RelPermalink }}">→</a>{{ end }}
+    </span>
+    {{ end }}
+</nav>
