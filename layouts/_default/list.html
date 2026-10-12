@@ -5,5 +5,16 @@
 
 {{ .Content }}
 
-{{ partial "post_list.html" (dict "context" . "section" .Section) }}
+{{ if .Params.group_by_year }}
+    {{ range .Pages.GroupByDate "2006" }}
+    <h2 class="posts-year-heading">{{ .Key }}</h2>
+    <ul class="post-list">
+        {{ range .Pages }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+    {{ end }}
+{{ else }}
+    {{ partial "post_list.html" (dict "context" . "section" .Section) }}
+{{ end }}
 {{ end }}
