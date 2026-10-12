@@ -1,6 +1,6 @@
 ---
 date: 2026-10-11
-title: section layout test
+title: layout sections columns
 draft: true
 ---
 
