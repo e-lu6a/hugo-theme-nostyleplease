@@ -5,6 +5,11 @@
 
 [markup]
   [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          inline = [['{{', '}}']]
     [markup.goldmark.parser]
       [markup.goldmark.parser.attribute]
         block = true

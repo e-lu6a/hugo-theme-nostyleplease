@@ -1,0 +1,12 @@
+{{- $inner := .Inner -}}
+{{- $parts := split $inner " " -}}
+{{- $class := index $parts 0 -}}
+{{- $content := strings.TrimPrefix (printf "%s " $class) $inner -}}
+{{- if eq $class "redact" -}}
+  {{- $length := len (trim $content " ") -}}
+  {{- $redacted := strings.Repeat $length "█" -}}
+  <span class="decorator-{{ $class }}" role="img" aria-label="redacted">{{ $redacted }}</span>
+{{- else -}}
+  {{- $rendered := .Page.RenderString (dict "display" "inline") $content -}}
+  <span class="decorator-{{ $class }}">{{ $rendered }}</span>
+{{- end -}}
