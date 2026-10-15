@@ -1,5 +1,9 @@
 <ul>
+    {{- $showDev := and $.Site.BuildDrafts (not $.Site.IsServer) -}}
+
     {{- range $item := .collection -}}
+        {{- if and $item.dev (not $showDev) -}}{{- continue -}}{{- end -}}
+
         {{- $postListVisible := true -}}
         {{- if $item.post_list -}}
             {{- if eq $item.post_list.visible false -}}
@@ -7,29 +11,45 @@
             {{- end -}}
         {{- end -}}
 
-        <li>
-            {{- if $item.post_list -}}
-                {{- if $postListVisible -}}
-                    {{ safeHTML $item.title }}
-                {{- else -}}
-                    {{- $sectionURL := printf "/%s/" $item.post_list.section -}}
-                    <a href="{{ $sectionURL | relURL }}">{{ safeHTML $item.title }}</a>
-                {{- end -}}
+        {{- $hasPosts := true -}}
+        {{- if and $item.post_list $postListVisible -}}
+            {{- $sectionPage := site.GetPage $item.post_list.section -}}
+            {{- $posts := "" -}}
+            {{- if $sectionPage -}}
+                {{- $posts = where $sectionPage.Pages "Kind" "page" -}}
             {{- else -}}
-                {{- with $item.url -}}
-                    <a href="{{ $item.url | relURL }}">{{ safeHTML $item.title }}</a>
-                {{- else -}}
-                    {{ safeHTML $item.title }}
-                {{- end -}}
+                {{- $posts = where site.RegularPages "Section" $item.post_list.section -}}
             {{- end -}}
-        </li>
-
-        {{- if $item.entries }}
-            {{ partial "menu_item.html" (dict "context" . "collection" $item.entries) }}
+            {{- if eq (len $posts) 0 -}}{{- $hasPosts = false -}}{{- end -}}
         {{- end -}}
 
-        {{- if and $item.post_list $postListVisible -}}
-            {{ partial "post_list.html" (dict "context" . "section" $item.post_list.section "limit" $item.post_list.limit "show_more" $item.post_list.show_more "show_more_text" $item.post_list.show_more_text "show_more_url" $item.post_list.show_more_url) -}}
+        {{- if $hasPosts -}}
+            {{- if $item.title -}}
+            <li>
+                {{- if $item.post_list -}}
+                    {{- if $postListVisible -}}
+                        {{ safeHTML $item.title }}
+                    {{- else -}}
+                        {{- $sectionURL := printf "/%s/" $item.post_list.section -}}
+                        <a href="{{ $sectionURL | relURL }}">{{ safeHTML $item.title }}</a>
+                    {{- end -}}
+                {{- else -}}
+                    {{- with $item.url -}}
+                        <a href="{{ $item.url | relURL }}">{{ safeHTML $item.title }}</a>
+                    {{- else -}}
+                        {{ safeHTML $item.title }}
+                    {{- end -}}
+                {{- end -}}
+            </li>
+            {{- end -}}
+
+            {{- if $item.entries }}
+                {{ partial "menu_item.html" (dict "context" . "collection" $item.entries) }}
+            {{- end -}}
+
+            {{- if and $item.post_list $postListVisible -}}
+                {{ partial "post_list.html" (dict "context" . "section" $item.post_list.section "limit" $item.post_list.limit "show_more" $item.post_list.show_more "show_more_text" $item.post_list.show_more_text "show_more_url" $item.post_list.show_more_url) -}}
+            {{- end -}}
         {{- end -}}
     {{- end -}}
 </ul>
