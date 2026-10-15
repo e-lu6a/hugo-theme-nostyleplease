@@ -2,6 +2,9 @@
 <div class="band-main">
     <h1>{{ .Title }}</h1>
     {{ partial "date.html" . }}
+    {{ with .Params.summary }}
+    <div class="post-summary">{{ . | safeHTML }}</div>
+    {{ end }}
 </div>
 
 {{ partial "auto-main.html" (dict "content" .Content) }}

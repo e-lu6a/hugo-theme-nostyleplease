@@ -120,6 +120,12 @@ body[a="light"] { @include elu6a-light-appearance; }
   padding-left: 0;
 }
 
+.post-summary {
+    font-style: italic;
+    color: var(--secondary-text-color);
+    margin-top: 0.5rem;
+}
+
 h1 + .post-list {
   margin-top: 1rem;
 }
