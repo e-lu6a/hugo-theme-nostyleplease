@@ -1,0 +1,60 @@
+<div class="site-preferences marginalia-right" hidden>
+    <div>
+        <button type="button" class="site-preferences-option" aria-pressed="false" data-font="toggle"><span class="font-label"></span></button>
+    </div>
+    <div>
+        <button type="button" class="site-preferences-option" aria-pressed="false" data-xray="toggle">x-ray</button>
+    </div>
+</div>
+<script>
+    (function () {
+        var FONT_KEY = "site-preferences-font";
+        var XRAY_KEY = "site-preferences-xray";
+        var strip = document.querySelector(".site-preferences");
+        var fontButton = document.querySelector(".site-preferences-option[data-font]");
+        var fontLabel = document.querySelector(".site-preferences-option[data-font] .font-label");
+        var xrayButton = document.querySelector(".site-preferences-option[data-xray]");
+
+        function applyFont(font) {
+            document.body.classList.toggle("font-serif", font === "serif");
+            if (fontLabel) {
+                fontLabel.textContent = font === "serif" ? "serif" : "monospace";
+            }
+        }
+
+        function applyXray(on) {
+            document.body.classList.toggle("xray", on);
+            if (xrayButton) {
+                xrayButton.classList.toggle("is-active", on);
+                xrayButton.setAttribute("aria-pressed", on ? "true" : "false");
+            }
+        }
+
+        // restore saved preferences before first paint, then reveal the strip
+        var savedFont = "monospace";
+        var savedXray = false;
+        try {
+            savedFont = localStorage.getItem(FONT_KEY) || "monospace";
+            savedXray = localStorage.getItem(XRAY_KEY) === "true";
+        } catch (e) {}
+        applyFont(savedFont);
+        applyXray(savedXray);
+        strip.hidden = false;
+
+        if (fontButton) {
+            fontButton.addEventListener("click", function () {
+                var next = document.body.classList.contains("font-serif") ? "monospace" : "serif";
+                try { localStorage.setItem(FONT_KEY, next); } catch (e) {}
+                applyFont(next);
+            });
+        }
+
+        if (xrayButton) {
+            xrayButton.addEventListener("click", function () {
+                var on = !document.body.classList.contains("xray");
+                try { localStorage.setItem(XRAY_KEY, on ? "true" : "false"); } catch (e) {}
+                applyXray(on);
+            });
+        }
+    })();
+</script>
