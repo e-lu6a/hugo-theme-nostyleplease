@@ -1,7 +1,12 @@
 {{- $posts := "" -}}
 
 {{- if .section -}}
-    {{- $posts = (where site.RegularPages "Section" .section) -}}
+    {{- $sectionPage := site.GetPage .section -}}
+    {{- if $sectionPage -}}
+        {{- $posts = where $sectionPage.Pages "Kind" "page" -}}
+    {{- else -}}
+        {{- $posts = (where site.RegularPages "Section" .section) -}}
+    {{- end -}}
 {{- else -}}
     {{- if (eq .context.Kind "taxonomy") -}}
         {{- $posts = .context.Pages -}}
