@@ -4,69 +4,69 @@ title: layout sections columns
 draft: true
 ---
 
+{{% main %}}
 default block
 
-this is content without any section markup. it should take up the narrower default width.
+this is content with the default markup. it should take up the narrower default width.
+{{% /main %}}
 
----
-
+{{% main %}}
 two-column section:
+{{% /main %}}
 
-{{< section >}}
-{{< col >}}
+{{% wide %}}
+{{% col %}}
 left column. this column should sit beside the right column on wide screens, and stack above it on narrow screens.
-{{< /col >}}
-{{< col >}}
+{{% /col %}}
+{{% col %}}
 right column. images, lists, and other markdown should still render normally inside a column.
 
 - one
 - two
 - three
-{{< /col >}}
-{{< /section >}}
+{{% /col %}}
+{{% /wide %}}
 
----
-
+{{% main %}}
 another single-column section:
 
 this confirms that a section without any `col` shortcodes is still treated as a single column.
+{{% /main %}}
 
----
-
-{{< section >}}
-{{< col >}}
+{{% wide %}}
+{{% col %}}
 **first column.** lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-{{< /col >}}
-{{< col >}}
+{{% /col %}}
+{{% col %}}
 **second column.** ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-{{< /col >}}
-{{< col >}}
+{{% /col %}}
+{{% col %}}
 **third column.** excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-{{< /col >}}
-{{< /section >}}
+{{% /col %}}
+{{% /wide %}}
 
----
+{{% main %}}
+two-column asymmetric section (primary → side):
+{{% /main %}}
 
-two-column asymmetric section (main → side):
-
-{{< section >}}
-{{< main >}}
-**main column.** lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-{{< /main >}}
-{{< side >}}
+{{% wide %}}
+{{% primary %}}
+**primary column.** lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+{{% /primary %}}
+{{% side %}}
 **side column.** duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-{{< /side >}}
-{{< /section >}}
+{{% /side %}}
+{{% /wide %}}
 
----
+{{% main %}}
+two-column asymmetric section (side → primary):
+{{% /main %}}
 
-two-column asymmetric section (side → main):
-
-{{< section >}}
-{{< side >}}
+{{% wide %}}
+{{% side %}}
 **side column on the left.** excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-{{< /side >}}
-{{< main >}}
-**main column on the right.** sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-{{< /main >}}
-{{< /section >}}
+{{% /side %}}
+{{% primary %}}
+**primary column on the right.** sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+{{% /primary %}}
+{{% /wide %}}
