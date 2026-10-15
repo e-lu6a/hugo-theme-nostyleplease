@@ -1,5 +1,5 @@
 <ul>
-    {{- $showDev := and $.Site.BuildDrafts (not $.Site.IsServer) -}}
+    {{- $showDev := and hugo.IsServer $.Site.BuildDrafts -}}
 
     {{- range $item := .collection -}}
         {{- if and $item.dev (not $showDev) -}}{{- continue -}}{{- end -}}

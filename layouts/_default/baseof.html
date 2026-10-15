@@ -12,7 +12,9 @@
                             {{ .Content }}
                         </div>
                     {{ end }}
-                    {{ partial "site-preferences.html" . }}
+                    {{ if and hugo.IsServer $.Site.BuildDrafts }}
+                        {{ partial "site-preferences.html" . }}
+                    {{ end }}
                 </div>
                 {{- block "main" . }}{{- end }}
                 <div class="footer-spacer"></div>
