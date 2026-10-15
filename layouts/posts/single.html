@@ -1,17 +1,9 @@
 {{ define "main" }}
-{{ partial "nav.html" . }}
+<div class="band-main">
+    <h1>{{ .Title }}</h1>
 
-<h1>{{ .Title }}</h1>
+    {{ partial "date.html" . }}
+</div>
 
-{{ partial "date.html" . }}
-
-<article>
-    {{ if .Params.toc }}
-        <aside {{ if .Params.tocBorder }} class="toc" {{ end }}>
-            {{ .TableOfContents }}
-        </aside>
-    {{ end }}
-
-    {{ .Content }}
-</article>
+{{ partial "auto-main.html" (dict "content" .Content) }}
 {{ end }}

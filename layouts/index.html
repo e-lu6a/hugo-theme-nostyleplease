@@ -1,15 +1,7 @@
 {{ define "main" }}
-<header>
-    {{- if $.Site.Params.theme_config.show_description -}}
-    <p>{{ $.Site.Params.description }}</p>
-    {{- end -}}
-</header>
-
-<div class="home-content">
-    {{ .Content }}
-</div>
-
-<div class="menu">
-    {{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
+<div class="band-main">
+    <div class="menu">
+        {{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}
+    </div>
 </div>
 {{ end }}

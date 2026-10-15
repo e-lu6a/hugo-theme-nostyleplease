@@ -1,9 +1,11 @@
 {{ define "main" }}
-{{ partial "nav.html" . }}
+<div class="band-main">
+    <h1>{{ .Title }}</h1>
 
-<h1>{{ .Title }}</h1>
+    {{ partial "auto-main.html" (dict "content" .Content) }}
+</div>
 
-{{ .Content }}
-
-{{ partial "post_list.html" (dict "context" .) }}
+<div class="band-main">
+    {{ partial "post_list.html" (dict "context" .) }}
+</div>
 {{ end }}

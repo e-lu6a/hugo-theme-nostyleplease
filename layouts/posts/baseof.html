@@ -3,11 +3,22 @@
     {{- partial "head.html" . -}}
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
         <main class="page-content" aria-label="Content">
-            <div class="w">
+            <div class="page-body">
+                <div class="band-main meta-band">
+                    {{ if not .IsHome }}
+                        {{ partial "nav.html" . }}
+                    {{ end }}
+                    {{ partial "site-preferences.html" . }}
+                </div>
                 {{- block "main" . }}{{- end }}
+                <div class="footer-spacer"></div>
+                <div class="band-main">
+                    {{ partial "footer.html" . }}
+                </div>
             </div>
         </main>
     </body>
+    <script src='{{ "js/toc.js" | relURL }}'></script>
     {{- if .Params.custom_js -}}
         {{- range .Params.custom_js -}}
             {{ $js := resources.Get (print "js/" . ".js") }}

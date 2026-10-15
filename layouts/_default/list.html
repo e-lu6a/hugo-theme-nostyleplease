@@ -1,20 +1,39 @@
 {{ define "main" }}
-{{ partial "nav.html" . }}
+<div class="band-main">
+    <h1>{{ .Title }}</h1>
+</div>
 
-<h1>{{ .Title }}</h1>
+{{ partial "auto-main.html" (dict "content" .Content) }}
 
-{{ .Content }}
-
-{{ if .Params.group_by_year }}
-    {{ range .Pages.GroupByDate "2006" }}
-    <h2 class="posts-year-heading">{{ .Key }}</h2>
-    <ul class="post-list">
-        {{ range .Pages }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-        {{ end }}
-    </ul>
-    {{ end }}
+{{ with .Params.menu }}
+    <div class="band-main">
+        <div class="menu">
+            {{ partial "menu_item.html" (dict "context" . "collection" .) }}
+        </div>
+    </div>
 {{ else }}
-    {{ partial "post_list.html" (dict "context" . "section" .Section) }}
+    {{ $direct := where .Pages "Kind" "page" }}
+    {{ $subsections := where .Pages "Kind" "section" }}
+
+    {{ range $subsections }}
+    <div class="band-main">
+        <h2 class="section-heading">{{ .Title }}</h2>
+        <ul class="post-list">
+            {{ range .Pages }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+
+    {{ if gt (len $direct) 0 }}
+    <div class="band-main">
+        <ul class="post-list">
+            {{ range $direct }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
 {{ end }}
 {{ end }}

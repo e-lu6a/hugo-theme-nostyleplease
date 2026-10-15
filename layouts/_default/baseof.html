@@ -3,9 +3,22 @@
     {{- partial "head.html" . -}}
     <body a="{{ $.Site.Params.theme_config.appearance | default "auto" }}">
         <main class="page-content" aria-label="Content">
-            <div class="w{{ if or .IsPage (and .IsNode (not .IsHome)) }} page-body{{ end }}">
+            <div class="page-body">
+                <div class="band-main meta-band">
+                    {{ if not .IsHome }}
+                        <div class="default-lane">{{ partial "nav.html" . }}</div>
+                    {{ else }}
+                        <div class="default-lane home-title">
+                            {{ .Content }}
+                        </div>
+                    {{ end }}
+                    {{ partial "site-preferences.html" . }}
+                </div>
                 {{- block "main" . }}{{- end }}
-                {{ partial "footer.html" }}
+                <div class="footer-spacer"></div>
+                <div class="band-main">
+                    {{ partial "footer.html" . }}
+                </div>
             </div>
         </main>
     </body>
