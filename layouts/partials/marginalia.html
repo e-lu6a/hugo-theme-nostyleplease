@@ -1,0 +1,5 @@
+<div class="band-main">
+  <aside class="marginalia-{{ .side | default "right" }}{{ with .class }} {{ . }}{{ end }}"{{ with .id }} id="{{ . }}"{{ end }}>
+    {{ .page.RenderString .content }}
+  </aside>
+</div>

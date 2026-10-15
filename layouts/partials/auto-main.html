@@ -1,0 +1,11 @@
+{{ $hasBands := findRE `<div class="band-(main|wide)` .content }}
+{{ $trimmed := trim .content " \n\r\t" }}
+{{ if and (not $hasBands) (ne $trimmed "") }}
+    <div class="band-main">
+        <div class="main-flow">
+            {{ .content }}
+        </div>
+    </div>
+{{ else }}
+    {{ .content }}
+{{ end }}
