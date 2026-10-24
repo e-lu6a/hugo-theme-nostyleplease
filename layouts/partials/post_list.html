@@ -30,6 +30,7 @@
     {{- if .limit }}
         {{ $posts = (first .limit $posts ) }}
     {{ end }}
+    {{- $posts = sort $posts "Date" "desc" -}}
     <ul class="post-list">
         {{- range $post := $posts -}}
         <li>
