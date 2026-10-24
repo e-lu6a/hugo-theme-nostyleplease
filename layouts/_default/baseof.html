@@ -12,7 +12,7 @@
                             {{ .Content }}
                         </div>
                     {{ end }}
-                    {{ if and hugo.IsServer $.Site.BuildDrafts }}
+                    {{ if and hugo.IsServer site.BuildDrafts }}
                         {{ partial "site-preferences.html" . }}
                     {{ end }}
                 </div>
