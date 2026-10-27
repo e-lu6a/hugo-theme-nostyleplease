@@ -1,4 +1,4 @@
-$default-width: 640px;
+$default-width: 500px;
 $marginalia-width: 320px;
 $gutter: 40px;
 $spread-width: ($marginalia-width * 2) + $default-width + ($gutter * 2); // 1360px
@@ -155,16 +155,25 @@ body.font-serif {
   font-family: palatino;
 } // font preference, set by the site-preferences partial
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
     font-size: var(--base-font-size);
     margin: 0;
 }
 
-h3, h4, h5, h6 { margin-top: 1.5rem; }
+.main-flow {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+  }
+}
 
-p { margin: 0.75rem 0; }
+// h3, h4, h5, h6 { margin-top: 1.5rem; }
 
-li { margin: 0.4rem 0; }
+ul, ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+li { margin: 0; }
 
 .section-heading { margin: 0; }
 
